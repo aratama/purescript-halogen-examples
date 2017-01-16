@@ -1,0 +1,26 @@
+{
+  "name": "purescript-halogen-examples-firebase-todo",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "aratama <aratama@example.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-halogen": "168a5f7",
+    "purescript-random": "^2.0.0",
+    "purescript-affjax": "^3.0.2",
+    "purescript-generics-rep": "^4.0.0",
+    "purescript-foreign-generic": "^3.0.0",
+    "purescript-maps": "^2.0.2",
+    "purescript-firebase3": "aratama/purescript-firebase3"
+  }
+}

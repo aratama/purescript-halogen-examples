@@ -1,0 +1,25 @@
+{
+  "name": "purescript-halogen-examples-timebomb",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "aratama <aratama@example.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-halogen": "168a5f7",
+    "purescript-js-timers": "^2.0.0",
+    "purescript-aff-wait": "aratama/purescript-aff-wait"
+  },
+  "devDependencies": {
+    "purescript-strongcheck": "^2.0.1"
+  }
+}

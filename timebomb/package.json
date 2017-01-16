@@ -1,0 +1,19 @@
+{
+  "name": "purescript-halogen-examples-timebomb",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "psc bower_components/purescript-*/src/**/*.purs src/**/*.purs test/**/*.purs",
+    "test": "psc-bundle --module Test --main Test output/**/*.js | node",
+    "prebuild": "psc bower_components/purescript-*/src/**/*.purs src/**/*.purs",
+    "build": "psc-bundle --module Main --main Main output/**/*.js --output public/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "xhr2": "^0.1.4"
+  },
+  "dependencies": {
+  }
+}

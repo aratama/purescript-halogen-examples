@@ -1,0 +1,45 @@
+.outer {
+    margin: 10px;
+    border: solid 1px black;
+    padding: 10px;
+    border-radius: 4px;
+    width: 250px;
+}
+.title {
+    font-size: large;
+    color: grey;
+    font-weight: bold;
+    margin: 8px;
+}
+.refreash {
+    font-size: small;
+    border: none;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.6);
+}
+.users {
+    display: flex;
+    flex-direction: column;
+}
+.user {
+    height: 50px;
+    display: flex;
+}
+img.avator {
+    width: 40px;
+    height: 40px;
+    border-radius: 20px;
+    flex-grow: 0;
+    border: none;
+}
+.name {
+    flex-grow: 1.0;
+    padding: 10px;
+}
+.close {
+    font-size: small;
+    border: none;
+    background-color: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    flex-grow: 0;
+}

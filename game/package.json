@@ -1,0 +1,19 @@
+{
+  "name": "purescript-halogen-examples-game",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "pretest": "psc bower_components/purescript-*/src/**/*.purs src/**/*.purs",
+    "test": "psc-bundle --module GithubAPI.Test --main GithubAPI.Test output/**/*.js | node",
+    "prebuild": "psc bower_components/purescript-*/src/**/*.purs src/**/*.purs",
+    "build": "psc-bundle --module Main --main Main output/**/*.js > public/index.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "xhr2": "^0.1.4"
+  },
+  "dependencies": {
+  }
+}

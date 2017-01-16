@@ -1,0 +1,16 @@
+{
+  "name": "purescript-halogen-examples",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-firebase-todo": "cd firebase-todo && bower update && npm run build",
+    "build-followbox": "cd followbox && bower update && npm run build",
+    "build-game": "cd game && bower update && npm run build",
+    "build-timebomb": "cd timebomb && bower update && npm run build",
+    "build": "npm run build-firebase-todo && npm run build-followbox && npm run build-game 6& npm run build-timebomb"
+  },
+  "author": "aratama",
+  "license": "MIT"
+}

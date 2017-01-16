@@ -1,0 +1,21 @@
+{
+  "name": "purescript-halogen-examples-game",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "aratama <aratama@example.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "purescript-halogen": "168a5f7",
+    "purescript-random": "^2.0.0"
+  }
+}
