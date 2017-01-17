@@ -2,10 +2,12 @@ module Example.Todo.View.Type where
 
 import Control.Monad.Eff.Console (CONSOLE)
 import Control.Monad.Eff.Random (RANDOM)
+import Data.Foreign (Foreign)
 import Example.Todo.Model.Type (Model, TaskId)
 import Halogen (HalogenEffects)
+import Halogen.Query.EventSource (SubscribeStatus)
 import Network.HTTP.Affjax (AJAX)
-import Web.Firebase (FIREBASE, Firebase, Reference)
+import Web.Firebase (FIREBASE, Firebase, Reference, Snapshot)
 
 type State = {
     firebase :: Firebase,
@@ -13,7 +15,7 @@ type State = {
 }
 
 data Connection = NoConnection
-                | Connecting
+                | Connecting Reference
                 | Connected Connected
 
 type Connected = {
@@ -28,6 +30,7 @@ data Query a
     | UpdateDescription TaskId String a
     | Newtask a
     | RemoveTask TaskId a
+    | HandleValue Snapshot (SubscribeStatus -> a)
 
 type Effects eff = HalogenEffects (
     ajax :: AJAX,

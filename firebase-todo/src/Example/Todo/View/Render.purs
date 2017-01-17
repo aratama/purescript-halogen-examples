@@ -3,7 +3,7 @@ module Example.Todo.View.Render (render) where
 import Data.Map (toUnfoldable)
 import Data.Tuple (Tuple(..))
 import Example.Todo.Model.Type (Model(..), Task(..), TaskId(..))
-import Example.Todo.View.ClassNames (outer, delete)
+import Example.Todo.View.ClassNames (delete, outer)
 import Example.Todo.View.Type (Connection(..), Query(..), State)
 import Halogen (ClassName(..), ComponentHTML)
 import Halogen.HTML (div, text)
@@ -18,40 +18,44 @@ icon :: forall r i. String -> HTML r i
 icon name = i [class_ $ ClassName $ "fa fa-" <> name] []
 
 render :: State -> ComponentHTML Query
-render s = div [class_ outer] case s.connection of
-    NoConnection -> [
-        button [
-            onClick $ input_ Connect
-        ] [text "Connect"]
-    ]
-    Connecting -> [text "Connecting..."]
-    Connected con@{ model: Model model@{ tasks } } -> [
-        h1_ [icon "cubes", text "Todo list"],
-        p [] [
-            button [
-                onClick $ input_ Newtask
-            ] [text "New Task"],
-            button [
-                onClick $ input_ Disconnect
-            ] [text "Disconnect"]
-        ],
-        div [] $ toUnfoldable tasks <#> \(Tuple (TaskId k) (Task v)) -> div [] [
-            P.input [
-                inputType InputCheckbox,
-                checked v.completed,
-                onChecked $ input_ $ ToggleCompleted (TaskId k)
-            ],
-            P.input [
-                inputType InputText,
-                placeholder "Task description",
-                autofocus true,
-                value v.description,
-                onValueChange $ input $ UpdateDescription (TaskId k)
-            ],
-            button [
-                onClick $ input_ $ RemoveTask (TaskId k),
-                class_ delete
-            ] [icon "remove"]
-        ]
-    ]
+render s = div [] [
+    h1_ [icon "cubes", text "Todo List"],
+    div [class_ outer] [
+        case s.connection of
+            NoConnection ->
+                button [
+                    onClick $ input_ Connect
+                ] [text "Connect"]
 
+            Connecting _ -> text "Connecting..."
+            Connected con@{ model: Model model@{ tasks } } -> div [] [
+
+                p [] [
+                    button [
+                        onClick $ input_ Newtask
+                    ] [text "New Task"],
+                    button [
+                        onClick $ input_ Disconnect
+                    ] [text "Disconnect"]
+                ],
+                div [] $ toUnfoldable tasks <#> \(Tuple (TaskId k) (Task v)) -> div [] [
+                    P.input [
+                        inputType InputCheckbox,
+                        checked v.completed,
+                        onChecked $ input_ $ ToggleCompleted (TaskId k)
+                    ],
+                    P.input [
+                        inputType InputText,
+                        placeholder "Task description",
+                        autofocus true,
+                        value v.description,
+                        onValueChange $ input $ UpdateDescription (TaskId k)
+                    ],
+                    button [
+                        onClick $ input_ $ RemoveTask (TaskId k),
+                        class_ delete
+                    ] [icon "remove"]
+                ]
+            ]
+    ]
+]
