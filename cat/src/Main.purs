@@ -2,6 +2,7 @@ module Main where
 
 import Control.Applicative (pure)
 import Control.Bind (class Bind, bind, (>>=))
+import Control.Monad (class Monad)
 import Control.Monad.Aff (Aff, attempt)
 import Control.Monad.Aff.Class (class MonadAff, liftAff)
 import Control.Monad.Eff (Eff)
