@@ -7,9 +7,10 @@ import Halogen.VDom.Driver (runUI)
 import Prelude (Unit, bind, ($))
 import Followbox.Type (Effects, Query(Refresh))
 import Followbox.Component (followbox)
+import Prelude (unit)
 
 main :: Eff (Effects ()) Unit
 main = runHalogenAff do
     body <- awaitBody
-    io <- runUI followbox body
+    io <- runUI followbox unit body
     io.query $ action Refresh
