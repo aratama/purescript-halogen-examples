@@ -2,6 +2,12 @@
 */node_modules
 */bower_components
 */.psc-ide-port
+*/.psc-package/
+*/.pulp-cache/
+*/generated-docs/
+*/.psc*
+*/.purs*
+*/.psa*
 */public/index.js
 
 # Windows image file caches

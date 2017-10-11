@@ -8,6 +8,7 @@ import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, errorShow)
 import GithubAPI (fetchUsers)
 import Network.HTTP.Affjax (AJAX)
+import Prelude (discard)
 
 main :: Eff (console :: CONSOLE, ajax :: AJAX) (Canceler (console :: CONSOLE, ajax :: AJAX))
 main = runAff errorShow pure do

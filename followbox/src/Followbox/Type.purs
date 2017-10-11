@@ -4,7 +4,7 @@ import Control.Monad.Eff.Random (RANDOM)
 import Data.Maybe (Maybe)
 import Data.Tuple (Tuple)
 import GithubAPI (User)
-import Halogen (HalogenEffects)
+import Halogen.Aff.Effects (HalogenEffects)
 import Network.HTTP.Affjax (AJAX, URL)
 
 type State = {

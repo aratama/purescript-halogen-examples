@@ -14,7 +14,7 @@ import GithubAPI (User(User), fetchUsers)
 import Halogen (ComponentDSL, get, liftEff, modify)
 import Halogen.Query (lift)
 import Network.HTTP.Affjax (get) as Affjax
-import Prelude (type (~>), bind, pure, unit, ($), (<#>), (=<<), (==))
+import Prelude (type (~>), bind, discard, pure, unit, ($), (<#>), (=<<), (==))
 
 numberOfUsers :: Int
 numberOfUsers = 3

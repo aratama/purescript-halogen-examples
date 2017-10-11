@@ -5,8 +5,8 @@ import Control.Monad.Eff.Exception (Error, error)
 import Control.Monad.Error.Class (class MonadError, throwError)
 import Control.Monad.Except (ExceptT, runExcept)
 import Data.Either (either)
-import Data.Foreign.Class (class IsForeign, read)
-import Data.Foreign.Generic (readGeneric, defaultOptions)
+import Data.Foreign.Class (class Decode, decode)
+import Data.Foreign.Generic (genericDecode, defaultOptions)
 import Data.Generic.Rep (class Generic)
 import Data.Generic.Rep.Show (genericShow)
 import Data.Identity (Identity)
@@ -24,8 +24,8 @@ newtype User = User {
 type Users = Array User
 
 -- 2. Derive some instances for the newtypes.
-instance isForeignUser :: IsForeign User where
-    read = readGeneric defaultOptions { unwrapSingleConstructors = true }
+instance isForeignUser :: Decode User where
+    decode = genericDecode defaultOptions { unwrapSingleConstructors = true }
 
 derive instance genericUser :: Generic User _
 
@@ -36,8 +36,8 @@ instance showUser :: Show User where
 fetchUsers :: forall eff. Int -> Aff (ajax :: AJAX | eff) Users
 fetchUsers since = do
     res <- get $ "https://api.github.com/users?since=" <> show since
-    liftEx $ read res.response
+    liftEx $ decode res.response
 
-liftEx :: forall m e. (MonadError Error m, Show e) => ExceptT e Identity ~> m
+liftEx :: forall m e. MonadError Error m => Show e => ExceptT e Identity ~> m
 liftEx = either (throwError <<< error <<< show) pure <<< runExcept
 
