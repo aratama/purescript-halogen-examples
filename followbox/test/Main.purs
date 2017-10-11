@@ -1,4 +1,4 @@
-module GithubAPI.Test where
+module Test.Main where
 
 import Control.Alternative (pure)
 import Control.Bind (bind)
