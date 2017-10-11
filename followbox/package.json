@@ -4,10 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "pretest": "psc bower_components/purescript-*/src/**/*.purs src/**/*.purs",
-    "test": "psc-bundle --module GithubAPI.Test --main GithubAPI.Test output/**/*.js | node",
-    "prebuild": "psc bower_components/purescript-*/src/**/*.purs src/**/*.purs",
-    "build": "psc-bundle --module Main --main Main output/**/*.js > public/index.js"
+    "build": "pulp build --to public/index.js",
+    "watch": "pulp -w build --to public/index.js",
+    "test": "pulp test"
   },
   "author": "",
   "license": "MIT",
